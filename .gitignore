@@ -1,0 +1,13 @@
+# 不需要备份的文件
+.clawhub/
+.openclaw/
+.venv/
+.vscode/
+*.pyc
+__pycache__/
+*.jpg
+*.png
+*.log
+
+# 可选：不备份 skills（可选）
+# skills/
