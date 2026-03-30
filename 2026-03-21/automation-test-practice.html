@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动化测试练习网站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        /* 表单样式 */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        /* 按钮样式 */
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a6fd6;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-warning {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        /* 表格样式 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+        }
+        
+        tr:hover {
+            background: #f0f0f0;
+        }
+        
+        /* 弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            text-align: center;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* 复选框和单选框 */
+        .checkbox-group,
+        .radio-group {
+            margin: 10px 0;
+        }
+        
+        .checkbox-group label,
+        .radio-group label {
+            display: inline;
+            margin-left: 8px;
+            font-weight: normal;
+        }
+        
+        /* 进度条 */
+        .progress-container {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* 提示消息 */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* 加载动画 */
+        .loader {
+            display: none;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* 标签页 */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: #666;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* 拖拽区域 */
+        .drop-zone {
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            padding: 60px;
+            text-align: center;
+            color: #667eea;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .drop-zone:hover {
+            background: #f0f0ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 自动化测试练习网站</h1>
+        <p class="subtitle">这个网站包含各种常见的 Web 元素，适合练习自动化测试</p>
+        
+        <!-- 表单测试区域 -->
+        <div class="section">
+            <h2>📋 表单测试</h2>
+            <form id="testForm">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username" name="username" placeholder="请输入用户名" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" placeholder="请输入密码" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">年龄</label>
+                    <input type="number" id="age" name="age" min="1" max="120" placeholder="18">
+                </div>
+                
+                <div class="form-group">
+                    <label for="birthday">生日</label>
+                    <input type="date" id="birthday" name="birthday">
+                </div>
+                
+                <div class="form-group">
+                    <label for="country">国家</label>
+                    <select id="country" name="country">
+                        <option value="">请选择</option>
+                        <option value="cn">中国</option>
+                        <option value="us">美国</option>
+                        <option value="uk">英国</option>
+                        <option value="jp">日本</option>
+                        <option value="kr">韩国</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>性别</label>
+                    <div class="radio-group">
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">男</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">女</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" id="other" name="gender" value="other">
+                        <label for="other">其他</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>兴趣爱好</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="reading" name="hobby" value="reading">
+                        <label for="reading">阅读</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="sports" name="hobby" value="sports">
+                        <label for="sports">运动</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="music" name="hobby" value="music">
+                        <label for="music">音乐</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="travel" name="hobby" value="travel">
+                        <label for="travel">旅行</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">个人简介</label>
+                    <textarea id="description" name="description" rows="4" placeholder="请简单介绍你自己..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">提交表单</button>
+                <button type="reset" class="btn btn-warning">重置</button>
+            </form>
+            
+            <div id="formAlert" class="alert"></div>
+        </div>
+        
+        <!-- 按钮测试区域 -->
+        <div class="section">
+            <h2>🔘 按钮测试</h2>
+            <button class="btn btn-primary" onclick="showAlert('你点击了主要按钮！')">主要按钮</button>
+            <button class="btn btn-success" onclick="showAlert('你点击了成功按钮！')">成功按钮</button>
+            <button class="btn btn-danger" onclick="showAlert('你点击了危险按钮！')">危险按钮</button>
+            <button class="btn btn-warning" onclick="showAlert('你点击了警告按钮！')">警告按钮</button>
+            <button class="btn btn-primary" onclick="openModal()">打开弹窗</button>
+            <button class="btn btn-success" onclick="startLoading()">显示加载</button>
+        </div>
+        
+        <!-- 进度条测试 -->
+        <div class="section">
+            <h2>📊 进度条测试</h2>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">0%</div>
+            </div>
+            <button class="btn btn-primary" onclick="startProgress()">开始进度</button>
+            <button class="btn btn-warning" onclick="resetProgress()">重置</button>
+        </div>
+        
+        <!-- 标签页测试 -->
+        <div class="section">
+            <h2>📑 标签页测试</h2>
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('tab1')">首页</button>
+                <button class="tab" onclick="switchTab('tab2')">产品</button>
+                <button class="tab" onclick="switchTab('tab3')">关于</button>
+            </div>
+            <div id="tab1" class="tab-content active">
+                <h3>欢迎来到首页</h3>
+                <p>这是首页的内容，你可以在这里练习标签页的切换测试。</p>
+            </div>
+            <div id="tab2" class="tab-content">
+                <h3>产品列表</h3>
+                <p>这里展示产品信息，适合练习元素定位和内容验证。</p>
+            </div>
+            <div id="tab3" class="tab-content">
+                <h3>关于我们</h3>
+                <p>这是关于页面，包含更多文本内容供测试使用。</p>
+            </div>
+        </div>
+        
+        <!-- 表格测试 -->
+        <div class="section">
+            <h2>📈 表格测试</h2>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>姓名</th>
+                        <th>职位</th>
+                        <th>部门</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>张三</td>
+                        <td>测试工程师</td>
+                        <td>质量部</td>
+                        <td><button class="btn btn-primary" onclick="editRow(this)">编辑</button></td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>李四</td>
+                        <td>开发工程师</td>
+                        <td>研发部</td>
+                        <td><button class="btn btn-primary" onclick="editRow(this)">编辑</button></td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>王五</td>
+                        <td>产品经理</td>
+                        <td>产品部</td>
+                        <td><button class="btn btn-primary" onclick="editRow(this)">编辑</button></td>
+                    </tr>
+                    <tr>
+                        <td>004</td>
+                        <td>赵六</td>
+                        <td>UI设计师</td>
+                        <td>设计部</td>
+                        <td><button class="btn btn-primary" onclick="editRow(this)">编辑</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- 文件上传测试 -->
+        <div class="section">
+            <h2>📤 文件上传测试</h2>
+            <div class="drop-zone" onclick="document.getElementById('fileInput').click()">
+                <p>📎 点击或拖拽文件到此处上传</p>
+                <input type="file" id="fileInput" style="display: none;" onchange="handleFileSelect(event)">
+            </div>
+            <div id="fileInfo"></div>
+        </div>
+        
+        <!-- 加载动画 -->
+        <div class="loader" id="loader"></div>
+    </div>
+    
+    <!-- 弹窗 -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>🎉 弹窗测试</h2>
+            <p>这是一个模态弹窗，你可以练习弹窗的打开和关闭测试。</p>
+            <br>
+            <button class="btn btn-primary" onclick="closeModal()">关闭</button>
+        </div>
+    </div>
+
+    <script>
+        // 表单提交
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const alert = document.getElementById('formAlert');
+            alert.className = 'alert alert-success';
+            alert.style.display = 'block';
+            alert.textContent = '✅ 表单提交成功！';
+            
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+        });
+        
+        // 显示提示
+        function showAlert(message) {
+            const alert = document.getElementById('formAlert');
+            alert.className = 'alert alert-success';
+            alert.style.display = 'block';
+            alert.textContent = message;
+            
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+        }
+        
+        // 打开弹窗
+        function openModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+        
+        // 关闭弹窗
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        
+        // 点击弹窗外部关闭
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // 进度条
+        function startProgress() {
+            const bar = document.getElementById('progressBar');
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    showAlert('进度完成！');
+                } else {
+                    width += 10;
+                    bar.style.width = width + '%';
+                    bar.textContent = width + '%';
+                }
+            }, 500);
+        }
+        
+        function resetProgress() {
+            const bar = document.getElementById('progressBar');
+            bar.style.width = '0%';
+            bar.textContent = '0%';
+        }
+        
+        // 标签页切换
+        function switchTab(tabId) {
+            // 移除所有active类
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // 添加active类到当前标签
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+        
+        // 编辑行
+        function editRow(btn) {
+            const row = btn.closest('tr');
+            const name = row.cells[1].textContent;
+            showAlert('正在编辑: ' + name);
+        }
+        
+        // 文件选择
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const info = document.getElementById('fileInfo');
+                info.innerHTML = `
+                    <div class="alert alert-success" style="display: block; margin-top: 20px;">
+                        ✅ 文件已选择: ${file.name}<br>
+                        大小: ${(file.size / 1024).toFixed(2)} KB<br>
+                        类型: ${file.type || '未知'}
+                    </div>
+                `;
+            }
+        }
+        
+        // 加载动画
+        function startLoading() {
+            const loader = document.getElementById('loader');
+            loader.style.display = 'block';
+            
+            setTimeout(() => {
+                loader.style.display = 'none';
+                showAlert('加载完成！');
+            }, 3000);
+        }
+        
+        // 拖拽上传
+        const dropZone = document.querySelector('.drop-zone');
+        
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.background = '#e0e0ff';
+        });
+        
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.style.background = '';
+        });
+        
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.background = '';
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                document.getElementById('fileInput').files = files;
+                handleFileSelect({ target: { files: files } });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "openclaw": {
+    "version": "2026.3.13",
+    "agents": {
+      "defaults": {
+        "workspace": {
+          "root": "D:\\",
+          "roots": ["D:\\", "C:\\Users\\29210\\.openclaw"]
+        }
+      }
+    }
+  }
+}
