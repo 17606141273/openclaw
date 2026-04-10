@@ -1,2 +1,0 @@
-$resp = Invoke-RestMethod -Uri 'https://ark.cn-beijing.volces.com/api/coding/v3/models' -Method GET -Headers @{'Content-Type'='application/json';'Authorization'='Bearer a6d737ce-51f4-4c56-ba60-d80e73448b53'}
-$resp.data | ForEach-Object { $_.id }

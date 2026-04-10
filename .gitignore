@@ -9,5 +9,22 @@ __pycache__/
 *.png
 *.log
 
+# 工作输出文件（不需要备份）
+test-*.ps1
+2026-*/
+xiaohongshu*
+ui_automation_project/
+MobileAutomationTestApp/
+*.pdf
+*.docx
+*.html
+*.zip
+*.xmind
+*.mp4
+*.ps1
+*.py
+!skills/**/*.py
+!skills/**/*.ps1
+
 # 可选：不备份 skills（可选）
 # skills/
