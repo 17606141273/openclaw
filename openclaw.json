@@ -1,0 +1,507 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.4.9",
+    "lastTouchedAt": "2026-04-10T16:53:46.997Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-04-10T15:41:16.906Z",
+    "lastRunVersion": "2026.4.9",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "moonshot:default": {
+        "provider": "moonshot",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "moonshot": {
+        "baseUrl": "https://api.moonshot.cn/v1",
+        "apiKey": "sk-jazjvrBnytpy1mNpdnXmcQw0sIS8zXHWNhZ6d8PL6t55fMPd",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "kimi-k2.5",
+            "name": "Kimi K2.5",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 256000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "minimax": {
+        "baseUrl": "https://api.minimax.chat/v1",
+        "apiKey": "sk-cp-0DBeYSSCuS5-jZLZ52VIziLETXUC9xNw8ZjdQYo8IoDbEyrdMzup1Y6WggDn7Q_O0C4DGP8vY6qrpAzMi3Wi4UbVIpR8erfUIeY0W93mbECcLjIgiM9zlbs",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "abab5.5-chat",
+            "name": "MiniMax Abab5.5 Chat",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 32000,
+            "maxTokens": 4096
+          },
+          {
+            "id": "abab5.5-turbo",
+            "name": "MiniMax Abab5.5 Turbo",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 32000,
+            "maxTokens": 4096
+          },
+          {
+            "id": "minimax-portal/MiniMax-M2.5",
+            "name": "MiniMax M2.5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 32000,
+            "maxTokens": 4096
+          },
+          {
+            "id": "minimax-portal/MiniMax-M2.7",
+            "name": "MiniMax M2.7",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 32000,
+            "maxTokens": 4096
+          }
+        ]
+      },
+      "mimo": {
+        "baseUrl": "https://api.xiaomimimo.com/v1",
+        "apiKey": "sk-cnimcjy0spvwir3qi97lmuv645rcmt2aodms4ut7xwwf1ko2",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "mimo-v2-flash",
+            "name": "MiMo V2 Flash",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "mimo-v2-omni",
+            "name": "MiMo V2 Omni",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "mimo-v2-pro",
+            "name": "MiMo V2 Pro",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "volcengine": {
+        "baseUrl": "https://ark.cn-beijing.volces.com/api/coding/v3",
+        "apiKey": "a6d737ce-51f4-4c56-ba60-d80e73448b53",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "doubao-1-5-pro-32k-250115",
+            "name": "Doubao 1.5 Pro 32K",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 131072,
+            "maxTokens": 12288,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "doubao-1-5-lite-32k-250115",
+            "name": "Doubao 1.5 Lite 32K",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 32768,
+            "maxTokens": 12288,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "doubao-1-5-pro-256k-250115",
+            "name": "Doubao 1.5 Pro 256K",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 12288,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "doubao-1-5-vision-pro-32k-250115",
+            "name": "Doubao 1.5 Vision Pro 32K",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 32768,
+            "maxTokens": 12288,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "doubao-seed-2.0-code",
+            "name": "Doubao Seed 2.0 Code",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 16000,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "doubao-seed-2.0-pro",
+            "name": "Doubao Seed 2.0 Pro",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 16000,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "doubao-seed-2.0-lite",
+            "name": "Doubao Seed 2.0 Lite",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 16000,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "doubao-seed-code",
+            "name": "Doubao Seed Code",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 200000,
+            "maxTokens": 16000,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "minimax-m2.5",
+            "name": "MiniMax M2.5",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 256000,
+            "maxTokens": 8192,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "glm-4.7",
+            "name": "GLM-4.7",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 128000,
+            "maxTokens": 8192,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "deepseek-v3.2",
+            "name": "DeepSeek V3.2",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 131000,
+            "maxTokens": 8192,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "kimi-k2.5",
+            "name": "Kimi K2.5",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 256000,
+            "maxTokens": 8192,
+            "reasoning": false,
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "api": "openai-completions"
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "volcengine/doubao-seed-2.0-code",
+        "fallbacks": [
+          "minimax/MiniMax-M2.5",
+          "moonshot/kimi-k2.5"
+        ]
+      },
+      "models": {
+        "moonshot/kimi-k2.5": {
+          "alias": "Kimi"
+        }
+      },
+      "sandbox": {
+        "mode": "off"
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "tools": {
+          "elevated": {
+            "enabled": true,
+            "allowFrom": {
+              "webchat": [],
+              "openclaw-control-ui": []
+            }
+          }
+        }
+      }
+    ]
+  },
+  "tools": {
+    "profile": "full",
+    "elevated": {
+      "enabled": true,
+      "allowFrom": {
+        "openclaw-control-ui": [],
+        "webchat": []
+      }
+    },
+    "fs": {
+      "workspaceOnly": false
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "appId": "cli_a938b676a6785bb4",
+      "appSecret": "dGhsecret",
+      "connectionMode": "websocket",
+      "domain": "feishu",
+      "groupPolicy": "allowlist",
+      "dmPolicy": "open",
+      "allowFrom": [
+        "*"
+      ]
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "ocw_gw_trUST"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "plugins": {
+    "allow": [
+      "feishu",
+      "minimax",
+      "moonshot",
+      "volcengine"
+    ],
+    "load": {
+      "paths": [
+        "C:\\Users\\29210\\AppData\\Roaming\\npm\\node_modules\\openclaw\\dist\\extensions\\feishu"
+      ]
+    },
+    "entries": {
+      "feishu": {
+        "enabled": true
+      },
+      "minimax": {
+        "enabled": true
+      },
+      "moonshot": {
+        "enabled": true
+      },
+      "volcengine": {
+        "enabled": true
+      }
+    }
+  }
+}
